@@ -9,7 +9,7 @@ df=pandas.DataFrame(columns=["Start","End"])
 video=cv2.VideoCapture(0)
 
 while True:
-    check, frame=video.read()
+    check, frame = video.read()
     status=0
     gray=cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
     gray=cv2.GaussianBlur(gray,(21,21),0)
@@ -28,6 +28,7 @@ while True:
         if cv2.contourArea(contour) < 10000:
             continue
         status=1
+
         (x, y, w, h)=cv2.boundingRect(contour)
         cv2.rectangle(frame, (x,y), (x+w, y+h), (0,255,0), 3)
 
@@ -61,4 +62,4 @@ for i in range(0,len(times),2):
 df.to_csv("Times.csv")
 
 video.release()
-cv2.destroyAllWindows()
+cv2.destroyAllWindows
